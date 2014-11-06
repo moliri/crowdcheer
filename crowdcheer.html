@@ -1,0 +1,129 @@
+<html>
+<head>
+  <title>EECS 395: CrowdCheer</title>
+
+  <link rel="stylesheet" href="styles-crowdcheer.css" />
+  <script type="text/javascript" src="https://www.patrickfweston.com/eecs395/js/jquery.min.js"></script>
+  <script type="text/javascript" src="https://s3.amazonaws.com/mturk-public/externalHIT_v1.js"></script>
+  <script type="text/javascript" src="https://www.patrickfweston.com/eecs395/js/underscore-min.js"></script>
+  <script type="text/javascript" src="https://www.patrickfweston.com/eecs395/js/backbone-min.js"></script>
+  <script type="text/javascript" src="https://www.patrickfweston.com/eecs395/js/parse-1.3.1.min.js"></script>
+</head>
+
+<body>
+
+  <h1>Provide motivation</h1>
+  <p></p>
+
+  <div id="record-button">
+    <p>This is a test</p>
+  </div>
+
+  <form name="suggestion" method="post" id="suggestion">
+    <input type="text" width="50" id="motivation" />
+    <input type="submit" value="Submit your suggestion" />
+  </form>
+
+  <form name='mturk_form' method='post' id='mturk_form' action="https://workersandbox.mturk.com/mturk/externalSubmit">
+    <input type='hidden' value='' name='assignmentId' id='assignmentId'/>
+    <textarea rows="5" cols="80" name="caption"></textarea>
+    <input type="submit" value="Submit">
+  </form>
+
+  <div id="voting"></div>
+
+  <script type="text/javascript">turkSetAssignmentID();</script>
+  <script type="text/javascript">
+    Parse.initialize("ZNriGqHFPHAL9FXdzVgtquCec9A72vuLFEfVcizZ", "2ltVaQqh0acVlWzG9HhUtsdCBqYQRCbmqv9EHo5W");
+
+    $(document).ready(function() {
+      $("#suggestion").submit(function(event) {
+        var SuggestionGroup = Parse.Object.extend("SuggestionGroup");
+        var suggestionGroup = new SuggestionGroup();
+
+        suggestionGroup.set("suggestion", $("#motivation").val());
+        suggestionGroup.set("session", 1);
+        suggestionGroup.set("votes", 0);
+
+        suggestionGroup.save(null, {
+        success: function(suggestionGroup) {
+          // Execute any logic that should take place after the object is saved.
+          console.log('New object created with objectId: ' + suggestionGroup.id);
+          displayVotes();
+        },
+        error: function(suggestionGroup, error) {
+          // Execute any logic that should take place if the save fails.
+          // error is a Parse.Error with an error code and message.
+          console.log('Failed to create new object, with error code: ' + error.message);
+        }
+        });
+        event.preventDefault();
+      });
+
+      $("#voting").on("click", ".vote-arrow", function() {
+        if ($(this).hasClass('disable')) { return; }
+        var voteArrow = $(this);
+        var change = 0;
+        $(this).hasClass('up-vote') == true ? change = 1 : change = -1;
+
+        var objectId = $(this).parent().data('id');
+
+        var SuggestionGroup = Parse.Object.extend("SuggestionGroup");
+        var query = new Parse.Query(SuggestionGroup);
+        query.get(objectId, {
+          success: function(suggestion) {
+            var votes = suggestion.get('votes');
+            votes += change;
+            suggestion.set("votes", votes);
+            suggestion.save().then(function() {
+              $('.vote').remove();
+              displayVotes(objectId);
+              console.log('.vote[data-id=' + objectId + '] .vote-arrow');
+            });
+          },
+          error: function(object, error) {
+            console.log(error);
+          }
+        })
+      });
+    }); 
+
+    function displayVotes(toHide) {
+      var SuggestionGroup = Parse.Object.extend("SuggestionGroup");
+      var query = new Parse.Query(SuggestionGroup);
+      query.limit(10);
+      query.descending("votes");
+
+      query.find({
+        success: function(results) {
+          console.log("Successfully retrieved " + results.length + " scores.");
+          // Do something with the returned Parse.Object values
+          var votingControls = "<div class='up-vote vote-arrow'>+</div><div class='down-vote vote-arrow'>-</div>";
+          for (var i = 0; i < results.length; i++) { 
+            var object = results[i];
+            var suggestion = "<span class='suggestion'>" + object.get('suggestion') + "</span>";
+            var votes = "<span class='votes'>" + object.get('votes') + "</span>";
+            $("#voting").append("<div class='vote' data-id=" + object.id + ">" + suggestion + ": " + votes + votingControls + "</div>");
+          }
+          if (toHide !== undefined) {
+            $('.vote[data-id=' + toHide + '] .vote-arrow').unbind('click').addClass('disable');
+          }
+        },
+        error: function(error) {
+          console.log("Error: " + error.code + " " + error.message);
+        }
+      }).then(function() {
+        console.log("Gathered votes");
+          // Hide the suggestion box and show the voting box
+        $("#suggestion").hide();
+        $("#voting").show();
+
+        console.log("Done displaying votes");
+        var prom = new jQuery.Deferred();
+        return prom;
+      });
+    }
+  </script>
+
+</body>
+</html>

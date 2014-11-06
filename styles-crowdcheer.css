@@ -1,0 +1,65 @@
+html, body {
+  font-family: Arial;
+}
+
+body {
+  width: 700px;
+}
+
+textarea {
+    width: 640px;
+    margin: 10px 0;
+    font-size: 18px;
+  }
+
+input[type="text"] {
+  display: block;
+  margin: 10px 0;
+  font-size: 18px;
+  width: 400px;
+}
+
+input[type="submit"] {
+  display: block;
+  font-size: 18px;
+}
+
+#mturk_form {
+  display: none;
+}
+
+.vote {
+  margin: 10px 0;
+}
+
+.suggestion {
+  font-size: 16px;
+}
+
+.votes {
+  font-size: 16px;
+}
+
+.vote-arrow {
+  display: inline-block;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  height: 20px;
+  width: 20px;
+  padding: 3px;
+  text-align: center;
+  color: #FFF;
+  cursor: pointer;
+}
+
+.up-vote {
+  background-color: blue;
+}
+
+.down-vote {
+  background-color: red;
+}
+
+.disable {
+  opacity: 0.6;
+}
