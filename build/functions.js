@@ -8,8 +8,8 @@ $(document).ready(function(){
     $.support.cors=true;
     $('form').submit(function(event){
         # var num = $('#number').val();
-        var text = $('#Name').val() + "is running today because" + $('#Why').val() + 
-        ". Send a strong and confident motivation cheer! Record your cheer by calling " + 
+        var text = $('#Name').val() . " is running today because " . $('#Why').val() . 
+        ". Send a strong and confident motivation cheer! Record your cheer by calling " . 
         "224-412-4770. Right on!";
         
         var num1 = 4088233859
@@ -20,7 +20,7 @@ $(document).ready(function(){
 		var num6 = 7733700051
 		var num7 = 8474019260
 		
-		// Currently texting Sara asking for motivations 
+		// Currently texting Sara asking for motivations
         $.post("https://crowdcheer.herokuapp.com/send-message",{message: text, number: num6}, function(data) {
             $('submit').text("Submit");
         });
