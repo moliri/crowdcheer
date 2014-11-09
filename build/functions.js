@@ -8,7 +8,10 @@ $(document).ready(function(){
     $.support.cors=true;
     $('form').submit(function(event){
         # var num = $('#number').val();
-        var text = "Haoqi is running today because" + $('#why').val() + ". Send him a cheer!" + "PHONE NUMBER TO RECORD TO";
+        var text = $('#Name').val() + "is running today because" + $('#Why').val() + 
+        ". Send a strong and confident motivation cheer! Record your cheer by calling " + 
+        "224-412-4770. Right on!";
+        
         var num1 = 4088233859
 		var num2 = 8477321145
 		var num3 = 7402442738
@@ -17,17 +20,13 @@ $(document).ready(function(){
 		var num6 = 7733700051
 		var num7 = 8474019260
 		
-        $.post("https://www.google.com/voice/m/sendsms",{message: text, number: num6}, function(data) {
-            $('button').text("Done");
+		// Currently texting Sara asking for motivations 
+        $.post("https://crowdcheer.herokuapp.com/send-message",{message: text, number: num6}, function(data) {
+            $('submit').text("Submit");
         });
         event.preventDefault();
     });
 });
 
-
 / google voice number is (209) 382-7693
 	(209) 38C-ROWD
-
-
-  /$.post("https://www.google.com/voice/m/sendsms",{message: text, number: num1, num2, num3, num4, num5, num6, num7}, function(data) {
-          $('button').text("Done");
