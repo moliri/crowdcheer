@@ -1,0 +1,82 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+
+  <title>My Parse App</title>
+  <meta name="description" content="My Parse App">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.3.1.min.js"></script>
+    <script type="text/javascript" src="twilio.js"></script>
+    <script type="text/javascript"
+src="//static.twilio.com/libs/twiliojs/1.2/twilio.min.js"></script>
+
+</head>
+
+<body>
+  
+   <!-- 
+Check Parse for current speed
+When runner drops below target speed, Twilio sends a recording to runner. 
+
+
+  --> 
+
+  <div id="main">
+    <h1>Speed Checking</h1>
+
+  </div>
+
+<script type="text/javascript">
+  Parse.initialize("ZNriGqHFPHAL9FXdzVgtquCec9A72vuLFEfVcizZ", "2ltVaQqh0acVlWzG9HhUtsdCBqYQRCbmqv9EHo5W");    
+
+
+var Speed = Parse.Object.extend("Speed");
+var query = new Parse.Query(Speed);
+
+query.descending("createdAt");
+query.first({
+  success: function(object) {
+    // Successfully retrieved the object.
+    if(object.get('speed') < 12){
+        alert(object.get('speed') + " is less than the goal.")
+        //twilio call
+        var accountSid = 'ACbbb8c6e3d5e297756ff33332f8e5d764'; 
+        var authToken = 'd99dc9a137db2f08404ad65c33c02027'; 
+         
+        //require the Twilio module and create a REST client 
+        var client = require('twilio')(accountSid, authToken); 
+         
+        client.messages.create({ 
+          to: "5712941193", 
+          from: "+12405605233", 
+          body: "keep running",   
+        }, function(err, message) { 
+          console.log(message.sid); 
+        });
+
+      }
+      else{
+        alert(object.get('speed') + " is above the goal.")
+
+      }
+
+  },
+  error: function(error) {
+    alert("Error: No speed data yet");
+  }
+});
+
+
+
+
+
+
+  </script>
+
+
+</body>
+
+</html>
