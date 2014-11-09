@@ -39,7 +39,7 @@ query.first({
         client.messages.create({ 
           to: "5712941193", 
           from: "+12405605233", 
-          body: motivations,   
+          body: motivation,   
         }, function(err, message) { 
           console.log(message.sid); 
         });
