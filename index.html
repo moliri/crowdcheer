@@ -32,7 +32,25 @@ When runner drops below target speed, Twilio sends a recording to runner.
 var Speed = Parse.Object.extend("Speed");
 var query = new Parse.Query(Speed);
 
+query.descending("createdAt");
+query.first({
+  success: function(object) {
+    // Successfully retrieved the object.
+    if(object.get('speed') < 12){
+        alert(object.get('speed') + " is less than the goal.")
+        //twilio call
 
+      }
+      else{
+        alert(object.get('speed') + " is above the goal.")
+
+      }
+
+  },
+  error: function(error) {
+    alert("Error: No speed data yet");
+  }
+});
 
 
 
