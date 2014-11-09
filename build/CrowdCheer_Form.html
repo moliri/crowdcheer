@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>CrowdCheer</title>
+
+   <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Custom styles for this template -->
+    <link href="jumbotron.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+    <script src="jquery.js"></script>
+
+    <script src="parse.js"></script>
+ 
+  </head>
+
+  <body>
+<div class='container'>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="margin-bottom:50px">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">CrowdCheer: Motivating runners through positive feedback from crowds</a>
+        </div>
+      </div>
+    </div>
+
+
+<div>CrowdCheer
+</div>
+
+<p>
+</p>
+
+<head>
+	<meta charset='utf-8' />
+	<title>
+	CrowdCheer
+	</title>
+{
+        text-align: center;
+    }
+</head>
+
+<body onload="doit()">
+<p>
+<h2 align='center'> Runners please fill this out:
+</h2>
+</p>
+
+<h1 align='center'>       
+</h1>
+<p>
+
+<form role="form" onsubmit="submitformtoparse()" id='CrowdCheerForm'>
+  <div class="form-group">
+    <label for="exampleWhy">Why are you running today?</label>
+    <input type="paragraph" class="form-control" id="Why" placeholder="Please enter what motivates you to run.">
+  </div>
+   <div class="form-group">
+    <label for="exampleTime">At what time are you running today?</label>
+    <input type="paragraph" class="form-control" id="Time" placeholder="Please put the specific time, as well as the time zone where you are located.">
+  </div>
+
+<!--     <div class="form-group">
+    <label for="exampleSpeed1">What is your target average pace?</label>
+    <input type="paragraph" class="form-control" id="Speed1" placeholder="Please specific your goal speed for minutes per mile.">
+  </div> -->
+
+    <div class="form-group"> 
+    	<label for="exampleSpeed2">What is your average mile pace goal for your run today?</label>
+<!-- <input type="email" class="form-control" id="Speed2" placeholder="Enter your coaches email address here"> -->
+
+	<select class="form-control">
+      <option value="6min">6:00 minutes/mile</option>
+    	<option value="7min">7:00 minutes/mile</option>
+    	<option value="8min">8:00 minutes/mile</option>
+    	<option value="9min">9:00 minutes/mile</option>
+    	<option value="10min">10:00 minutes/mile</option>
+    	<option value="11min">11:00 minutes/mile</option>
+	</select>
+
+   		<!-- Insert drop-down box  -->
+		</p>
+		<h1 align='center'>       
+		</h1>
+		<p>
+
+  		 <button type ="submit" align="center" class="btn btn-default"value="Refresh">Submit</button>
+
+  		  </div>
+    </div>
+</form>
+
+
+</body>
+</html>
