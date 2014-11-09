@@ -15,11 +15,16 @@ $query->descending("createdAt");
 $latestObj = $query->first();
 $latestSpeed = $latestObj->get("speed");
 
-while($justStarted = false)
+if($latestSpeed >= $goal){
+  $justStarted = false;
+}
+
+while($justStarted = false){
   if ($latestSpeed < $goal){
     exec("php listen.php");
-
   }
+}
+
 }
 ?>
 
