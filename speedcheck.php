@@ -24,7 +24,7 @@ if($latestSpeed >= $goal){
   $justStarted = false;
 }
 
-while($justStarted = false){
+while($justStarted = false && $latestSpeed){
   if ($latestSpeed < $goal){
     exec("php listen.php");
   }
