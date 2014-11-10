@@ -44,7 +44,7 @@ $app->get('/send-message', function() use($app) {
   return 'get';
 });
 
-/*//Database initial
+/*Database initial
 $app->get('/db/initial',funtion() use($app){
 	$st = $app['pdo']->prepare('CREATE TABLE user(
 			UID		INT PRIMARY KEY  NOT NULL,
