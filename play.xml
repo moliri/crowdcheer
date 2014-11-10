@@ -14,11 +14,6 @@
 // $latestObj = $query->first();
 // $messageURL = $latestObj->get("messageURL"); -->
 
-
-	
-
-?>
-
 <Response>
 	<?php
 		require 'vendor/autoload.php';
