@@ -21,7 +21,7 @@ function checkSpeed($goal){
   $latestSpeed = $latestObj->get("speed");
   $latestStatusObj = $latestObj->get("status");
 
-  while(latestStatusObj = "running"){
+  while(latestStatusObj == "running"){
 
     if($latestSpeed >= $goal){
       $justStarted = false;
