@@ -3,6 +3,7 @@
 // and play the recording back, using the URL that Twilio posted
 header("content-type: text/xml");
 echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+$url = $_REQUEST['RecordingUrl'];
 ?>
 <Response>
 <Say>Thanks for the cheer! ... take a listen to what you said.</Say>
