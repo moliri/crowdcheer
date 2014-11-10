@@ -1,11 +1,13 @@
 <?php
 // Include the Twilio PHP library
 require 'twilio-php/Services/Twilio.php';
-require 'vendor/autoload.php';
 //Parse libraries 
+require 'vendor/autoload.php';
 use Parse\ParseClient;
 use Parse\ParseObject;
 use Parse\ParseQuery;
+date_default_timezone_set('America/Chicago');
+
 ParseClient::initialize('QXRTROGsVaRn4a3kw4gaFnHGNOsZxXoZ8ULxwZmf', 'BCJuFgG7GVxZfnc2mVbt2dzLz4bP7qAu16xaItXB', 'j9TIxQX3zEHkDPfQszCa6ariYTmZ8JU0RC31BKZK');
 
 // Twilio REST API version
@@ -28,12 +30,12 @@ $messageURL = $latestObj->get("messageURL");
 
 
 try {
-// Initiate a new outbound call
-$call = $client->account->calls->create(
-$phonenumber, // The number of the phone initiating the call
-'8474019260', // The number of the phone receiving call
-$messageURL
-//'http://demo.twilio.com/welcome/voice/' // The URL Twilio will request when the call is answered
+	// Initiate a new outbound call
+	$call = $client->account->calls->create(
+	$phonenumber, // The number of the phone initiating the call
+	'8474019260', // The number of the phone receiving call
+	$messageURL // The URL Twilio will request when the call is answered
+	//'http://demo.twilio.com/welcome/voice/' // The URL Twilio will request when the call is answered
 );
 
 
