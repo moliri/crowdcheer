@@ -1,6 +1,6 @@
 <?php
 
-require('../vendor/autoload.php');
+require('vendor/autoload.php');
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -10,7 +10,7 @@ $app['debug'] = true;
 //database initial
 $dbopts = parse_url(getenv('DATABASE_URL'));
 // Register the Database service
-$app->register(new Herrera\Pdo\PdoServiceProvider(),
+/*$app->register(new Herrera\Pdo\PdoServiceProvider(),
   array(
     'pdo.dsn' => 'pgsql:dbname='.ltrim($dbopts["path"],'/').';host='.$dbopts["host"],
     'pdo.port' => $dbopts["port"],
@@ -23,13 +23,13 @@ $app->register(new Herrera\Pdo\PdoServiceProvider(),
 $app->register(new Silex\Provider\MonologServiceProvider(), array(
   'monolog.logfile' => 'php://stderr',
 ));
-
+*/
 // Our web handlers
 $app->get('/', function() use($app) {
-  $app['monolog']->addDebug('logging output.');
+  //$app['monolog']->addDebug('logging output.');
   return 'Running';
 });
-
+/*
 $app->post('/send-message', function(Request $request) {
 	$message = $request->get('message');
 	$number = $request->get('number');
@@ -44,7 +44,7 @@ $app->get('/send-message', function() use($app) {
   return 'get';
 });
 
-/*//Database initial
+/*Database initial
 $app->get('/db/initial',funtion() use($app){
 	$st = $app['pdo']->prepare('CREATE TABLE user(
 			UID		INT PRIMARY KEY  NOT NULL,
