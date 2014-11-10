@@ -63,7 +63,7 @@ $app->get('/db/initial',funtion() use($app){
 $app->post('/db/new-user',function(Request $request) {
 	$number = $request->get('number');
 })*/
-*/
+
 $app->run();
 
 ?>
