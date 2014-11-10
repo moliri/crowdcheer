@@ -4,7 +4,10 @@
 header("content-type: text/xml");
 echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 require 'vendor/autoload.php'; 
+
 use Parse\ParseClient;
+use Parse\ParseObject;
+
 ParseClient::initialize('QXRTROGsVaRn4a3kw4gaFnHGNOsZxXoZ8ULxwZmf', 'BCJuFgG7GVxZfnc2mVbt2dzLz4bP7qAu16xaItXB', 'j9TIxQX3zEHkDPfQszCa6ariYTmZ8JU0RC31BKZK');
 $url = $_REQUEST['RecordingUrl'];
 
