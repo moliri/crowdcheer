@@ -10,7 +10,7 @@ $app['debug'] = true;
 //database initial
 $dbopts = parse_url(getenv('DATABASE_URL'));
 // Register the Database service
-$app->register(new Herrera\Pdo\PdoServiceProvider(),
+/*$app->register(new Herrera\Pdo\PdoServiceProvider(),
   array(
     'pdo.dsn' => 'pgsql:dbname='.ltrim($dbopts["path"],'/').';host='.$dbopts["host"],
     'pdo.port' => $dbopts["port"],
@@ -23,13 +23,13 @@ $app->register(new Herrera\Pdo\PdoServiceProvider(),
 $app->register(new Silex\Provider\MonologServiceProvider(), array(
   'monolog.logfile' => 'php://stderr',
 ));
-
+*/
 // Our web handlers
 $app->get('/', function() use($app) {
   $app['monolog']->addDebug('logging output.');
   return 'Running';
 });
-
+/*
 $app->post('/send-message', function(Request $request) {
 	$message = $request->get('message');
 	$number = $request->get('number');
@@ -63,7 +63,7 @@ $app->get('/db/initial',funtion() use($app){
 $app->post('/db/new-user',function(Request $request) {
 	$number = $request->get('number');
 })*/
-
+*/
 $app->run();
 
 ?>
