@@ -10,7 +10,7 @@ use Parse\ParseQuery;
  
 ParseClient::initialize('QXRTROGsVaRn4a3kw4gaFnHGNOsZxXoZ8ULxwZmf', 'BCJuFgG7GVxZfnc2mVbt2dzLz4bP7qAu16xaItXB', 'j9TIxQX3zEHkDPfQszCa6ariYTmZ8JU0RC31BKZK');
 
-echo("this is the speecheck.php file")
+echo "this is the speecheck.php file";
 
 function checkSpeed($goal){
   $justStarted = true;
