@@ -16,7 +16,7 @@ $msgURL->set("messageURL", $url);
 
 try {
   $msgURL->save();
-//  echo 'New object created with objectId: ' . $msgURL->getObjectId();
+  echo 'New object created with objectId: ' . $msgURL->getObjectId();
 }
 
 ?>
