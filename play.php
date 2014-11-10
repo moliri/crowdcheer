@@ -1,18 +1,18 @@
-<?php
+<?xml version="1.0" encoding="UTF-8"?>
 
-//Parse libraries 
-require 'vendor/autoload.php';
-use Parse\ParseClient;
-use Parse\ParseObject;
-use Parse\ParseQuery;
+<!-- // //Parse libraries 
+// require 'vendor/autoload.php';
+// use Parse\ParseClient;
+// use Parse\ParseObject;
+// use Parse\ParseQuery;
 
-ParseClient::initialize('QXRTROGsVaRn4a3kw4gaFnHGNOsZxXoZ8ULxwZmf', 'BCJuFgG7GVxZfnc2mVbt2dzLz4bP7qAu16xaItXB', 'j9TIxQX3zEHkDPfQszCa6ariYTmZ8JU0RC31BKZK');
+// ParseClient::initialize('QXRTROGsVaRn4a3kw4gaFnHGNOsZxXoZ8ULxwZmf', 'BCJuFgG7GVxZfnc2mVbt2dzLz4bP7qAu16xaItXB', 'j9TIxQX3zEHkDPfQszCa6ariYTmZ8JU0RC31BKZK');
 
-//Parse message URL retrieval	
-$query = new ParseQuery("MsgURL");
-$query->ascending("createdAt");
-$latestObj = $query->first();
-$messageURL = $latestObj->get("messageURL");
+// //Parse message URL retrieval	
+// $query = new ParseQuery("MsgURL");
+// $query->ascending("createdAt");
+// $latestObj = $query->first();
+// $messageURL = $latestObj->get("messageURL"); -->
 
 
 	
