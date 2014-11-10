@@ -20,10 +20,12 @@ $client = new Services_Twilio($sid, $token, $version);
 
 //Parse message URL retrieval	
 $query = new ParseQuery("MsgURL");
-$query->descending("createdAt");
-try {
-	$messageURL = $msgURL->get("messageURL");
-}
+$query->ascending("createdAt");
+$latestObj = $query->first();
+$messageURL = $latestObj->get("messageURL");
+
+
+
 
 try {
 // Initiate a new outbound call
@@ -33,6 +35,9 @@ $phonenumber, // The number of the phone initiating the call
 $messageURL
 //'http://demo.twilio.com/welcome/voice/' // The URL Twilio will request when the call is answered
 );
+
+
+$latestObj->destroy();
 
 echo 'Started call: ' . $call->sid;
 } catch (Exception $e) {
