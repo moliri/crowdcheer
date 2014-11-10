@@ -30,7 +30,7 @@ function checkSpeed(){
 
     if($justStarted = false && $latestSpeed){
       if ($latestSpeed <= 6){
-        exec("php motivate_call.php");
+        include 'motivate_call.php';
       }
     }
 
