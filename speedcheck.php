@@ -10,9 +10,9 @@ use Parse\ParseQuery;
  
 ParseClient::initialize('QXRTROGsVaRn4a3kw4gaFnHGNOsZxXoZ8ULxwZmf', 'BCJuFgG7GVxZfnc2mVbt2dzLz4bP7qAu16xaItXB', 'j9TIxQX3zEHkDPfQszCa6ariYTmZ8JU0RC31BKZK');
 
-echo "this is the speecheck.php file";
 
-function checkSpeed($goal){
+function checkSpeed(){
+
   $justStarted = true;
 
   $query = new ParseQuery("Speed");
@@ -21,14 +21,15 @@ function checkSpeed($goal){
   $latestSpeed = $latestObj->get("speed");
   $latestStatusObj = $latestObj->get("status");
 
+
   while(latestStatusObj == "running"){
 
-    if($latestSpeed >= $goal){
+    if($latestSpeed >= 6){
       $justStarted = false;
     }
 
     if($justStarted = false && $latestSpeed){
-      if ($latestSpeed <= $goal){
+      if ($latestSpeed <= 6){
         exec("php motivate_call.php");
       }
     }
