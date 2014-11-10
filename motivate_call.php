@@ -39,10 +39,9 @@ try {
 	//'http://demo.twilio.com/welcome/voice/' // The URL Twilio will request when the call is answered
 );
 
-
-$latestObj->destroy();
-
 echo 'Started call: ' . $call->sid;
 } catch (Exception $e) {
 echo 'Error: ' . $e->getMessage();
 }
+
+$latestObj->destroy();
