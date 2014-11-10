@@ -12,7 +12,7 @@ ParseClient::initialize('QXRTROGsVaRn4a3kw4gaFnHGNOsZxXoZ8ULxwZmf', 'BCJuFgG7GVx
 
 
 
-function checkSpeed($goal, $message){
+function checkSpeed($goal){
 $justStarted = true;
 
 $query = new ParseQuery("Speed");
@@ -25,8 +25,8 @@ if($latestSpeed >= $goal){
 }
 
 while($justStarted = false && $latestSpeed){
-  if ($latestSpeed < $goal){
-    exec("php listen.php");
+  if ($latestSpeed <= $goal){
+    exec("php motivate_call.php");
   }
 }
 
