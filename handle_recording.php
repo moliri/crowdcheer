@@ -13,11 +13,16 @@ $url = $_REQUEST['RecordingUrl'];
 
 $msgURL = new ParseObject("MsgURL");
 $msgURL->set("messageURL", $url);
+$msgURL->save();
 
-try {
-  $msgURL->save();
-  echo 'New object created with objectId: ' . $msgURL->getObjectId();
-}
+//try {
+  //$msgURL->save();
+  //echo 'New object created with objectId: ' . $msgURL->getObjectId();
+//} catch (ParseException $ex) { 
+  // Execute any logic that should take place if the save fails.
+  // error is a ParseException object with an error code and message.
+  //echo 'Failed to create new object, with error message: ' + $ex->getMessage();
+//}
 
 ?>
 <Response>

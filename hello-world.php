@@ -6,8 +6,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 	<Say> Record your motivational message now. Press # when you are finished. </Say>
 	<Record 
 		playBeep="true" 
-		maxLength="30" 
-		finishOnKey="#" 
+		maxLength="30"
 		action="handle_recording.php" />
 </Response>
 
